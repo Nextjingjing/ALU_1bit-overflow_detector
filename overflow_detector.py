@@ -4,20 +4,20 @@ from myhdl import block, always_comb, Signal, intbv, toVHDL, ConversionError
 def overflow_detector(a, b, sum, Overflow):
     @always_comb
     def logic():
-        # Correct logic for detecting overflow in signed 1-bit addition
-        Overflow.next = (a & b & ~sum) | (~a & ~b & sum)
-    
+        # Logic ตามสมการ Overflow
+        Overflow.next = ((a ^ b) & ~sum) | (a & b)
     return logic
 
+
 # Define input and output signals
-A = Signal(intbv(0)[1:])
-B = Signal(intbv(0)[1:])
-SUM = Signal(intbv(0)[1:])
-OVERFLOW = Signal(intbv(0)[1:])
+A = Signal(intbv(0)[1:])    # a เป็น 1-bit Signal
+B = Signal(intbv(0)[1:])    # b เป็น 1-bit Signal
+SUM = Signal(intbv(0)[1:])  # sum เป็น 1-bit Signal
+OVERFLOW = Signal(intbv(0)[1:])  # Overflow เป็น 1-bit Signal
 
 # Create and convert to VHDL
 try:
     inst = overflow_detector(A, B, SUM, OVERFLOW)
-    inst.convert(hdl='VHDL')
+    inst.convert(hdl='VHDL')  # แปลงเป็น VHDL
 except ConversionError as e:
     print(f"Conversion failed: {e}")
