@@ -4,13 +4,6 @@ alu_1bit testcase: https://docs.google.com/spreadsheets/d/1juVBiRlxR-z9TWcU2pYOp
 pass all test case /
 
 overflow_detector testcase:
-A B SUM  | Expected Overflow  | Detected Overflow
-0 0  0   |         0          |         0
-0 0  1   |         1          |         1
-0 1  0   |         0          |         0
-0 1  1   |         0          |         0
-1 0  0   |         0          |         0
-1 0  1   |         0          |         0
-1 1  0   |         1          |         1
-1 1  1   |         0          |         0
+![image](https://github.com/user-attachments/assets/5a1d13ce-5192-4b53-a469-f44d73a02c92)
+
 pass all test case /
